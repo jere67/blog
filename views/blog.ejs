@@ -1,0 +1,125 @@
+<%- include("partials/header.ejs") %>
+<section id="navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent mx-3" aria-label="Fifth navbar example">
+    <div class="container-fluid my-1">
+      <a href="/"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="30" height="30" viewBox="0 0 256 256" xml:space="preserve">
+        <defs>
+        </defs>
+        <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+          <path d="M 46.58 90 c -12.442 0 -24.139 -4.846 -32.937 -13.644 S 0 55.861 0 43.419 c 0 -12.442 4.845 -24.14 13.644 -32.938 c 4.464 -4.465 9.678 -7.918 15.495 -10.264 c 1.217 -0.491 2.612 -0.133 3.443 0.882 c 0.831 1.015 0.906 2.453 0.185 3.549 c -9.838 14.953 -7.777 35.007 4.899 47.684 h 0 c 12.677 12.678 32.732 14.736 47.684 4.9 c 1.097 -0.722 2.534 -0.646 3.55 0.185 s 1.373 2.226 0.882 3.443 c -2.345 5.815 -5.798 11.029 -10.265 15.495 C 70.72 85.154 59.022 90 46.58 90 z M 23.294 10.174 c -1.918 1.347 -3.724 2.866 -5.408 4.551 C 10.221 22.39 6 32.58 6 43.419 s 4.221 21.03 11.886 28.695 C 25.551 79.779 35.741 84 46.58 84 c 10.84 0 21.03 -4.222 28.695 -11.886 c 1.685 -1.685 3.204 -3.491 4.551 -5.408 c -15.799 5.837 -34.101 2.171 -46.402 -10.131 h 0 c 0 0 0 0 0 0 C 21.123 44.274 17.456 25.973 23.294 10.174 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+        </g>
+        </svg></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse flex-lg-row-reverse" id="navbarsExample05">
+        <ul class="navbar-nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-large">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/blog">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/create">Create</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/edit">Edit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/delete">Delete</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<div id="bg">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+
+<section id="content">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <% posts.forEach(post => { %>
+            <!-- Post preview-->
+            <div class="post-preview">
+              <a href="post.html">
+                  <h2 class="post-title"><%= post.title %> </h2></a>
+              <p><%= post.content %> <p>
+              <p class="post-meta fw-bold">
+                  Posted by
+                  <%= post.author %>
+                  on <%= new Date().toDateString() %>
+              </p>
+            </div>
+          <!-- Divider-->
+          <hr class="my-4">
+          <% }); %>
+            <!-- Post preview-->
+            <div class="post-preview">
+                  <a href="post.html"><h2 class="post-title">Unpacking NLP: How Machines Learn Our Language</h2></a>
+                    <p class="post-subtitle">NLP is a branch of Artificial Intelligence (AI) focused on bridging the gap between computers and human language. It allows machines to analyze, understand, and even generate text. But how does it actually work?</p>
+
+                      <p>Imagine a giant word puzzle. NLP starts by breaking down text into its building blocks – words, sentences, and their structure. Then, it uses complex algorithms to uncover the relationships between these pieces. It's like teaching a machine the grammar, vocabulary, and even sarcasm of human communication!</p>
+                      
+                      <p>Here's a peek under the hood:</p>
+                      
+                      <ul>
+                        <li>Word Embeddings: Imagine each word as a unique point on a map. NLP can create these maps, where words with similar meanings cluster together. This helps the machine understand the context of a sentence.
+                        <li>Machine Learning: NLP algorithms are trained on massive amounts of text data. This allows them to learn patterns and "understand" the nuances of language.</li>
+                        <li>Deep Learning: More advanced NLP uses deep learning models, like those used in image recognition, to analyze text. These models can find hidden patterns and unlock even more complex aspects of language.</li>
+                      </ul>
+                      <p>So, what can NLP do? The possibilities are endless! It powers everything from chatbots and virtual assistants to sentiment analysis and machine translation. NLP is even being used to write different kinds of creative content,  like poems or code!</p>
+                      
+                      <p>As NLP continues to evolve, the way we interact with machines and the world around us will keep changing. It's an exciting future, and NLP is at the heart of it all!</p>
+                <p class="post-meta fw-bold">
+                    Posted by
+                    Jeremy Moon
+                    on Tues Jul 9 2024
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4">
+            <!-- Post preview-->
+            <div class="post-preview">
+              <a href="post.html"><h2 class="post-title">The Guts of Data Science: A Peek Under the Hood</h2></a>
+                <p>
+                  Data science might seem like magic, but at its core, it's a blend of powerful techniques. The journey starts with data wrangling, where messy data is cleaned, organized, and transformed. Statistics come into play to analyze trends, identify patterns, and measure relationships.  Programming languages like Python and R are essential for manipulating data and building models. Machine learning algorithms, inspired by the human brain, are trained on this data to learn from patterns and make predictions.  These algorithms can be anything from decision trees, which make branching choices based on data points, to complex neural networks that mimic the human brain's structure for intricate tasks. Visualization tools then translate complex insights into easy-to-understand charts and graphs, allowing clear communication of the findings.  Finally, data science isn't just about technical skills. A healthy dose of curiosity, creativity, and critical thinking is essential to ask the right questions, interpret results, and transform data into actionable insights.
+                </p>
+            <p class="post-meta fw-bold">
+                Posted by
+                Jeremy Moon
+                on Mon Jul 8 2024
+            </p>
+        </div>
+        <!-- Divider-->
+        <hr class="my-4">
+            <!-- Post preview-->
+            <div class="post-preview">
+              <a href="post.html"><h2 class="post-title">Forget the Spark: Unleash Motivation by Embracing the Grind</h2></a>
+                <p>
+                  I've been thinking a lot lately about motivation. It seems these days there's a lot of talk about finding the right spark, the magic bullet that will get you going. But what if it's not about finding something, but rather rejecting something else? What if the biggest hurdle to motivation is the idea that things should be easy?
+
+                  Maybe the most motivating force is the simple truth: if you want something bad enough, you'll go after it, no matter the difficulty. Challenges become stepping stones, struggles become tests of your will. It's about taking responsibility for your own trajectory, ditching the excuses, and understanding that time wasted is a far greater enemy than any obstacle. This isn't about blind optimism, it's about embracing the fight. After all, the victories that taste the sweetest are the ones hard-won.
+                </p>
+                
+            <p class="post-meta fw-bold">
+                Posted by
+                Jeremy Moon
+                on Mon Jul 8 2024
+            </p>
+        </div>
+        <!-- Divider-->
+        <hr class="my-4">
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+        </div>
+    </div>
+</div>
+</section>
+
+<%- include("partials/footer.ejs") %>
