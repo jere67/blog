@@ -54,8 +54,23 @@
 
                   <span class="d-flex justify-content-end my-1">
                     <button class="mx-2"><a href="/edit/<%= post.id %>"><img src="/assets/edit.svg" width="20" ></a></button>
-                    <button class=""><a href="/api/posts/delete/<%= post.id %>"><img src="/assets/delete.svg" width="20"></a></button>
+                    <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="/assets/delete.svg" width="20"></button>
                   </span>
+
+                  <div class="modal fade rounded-3 shadow" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header p-4 text-center">
+                          <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer flex-nowrap p-0">
+                          <a href="/api/posts/delete/<%= post.id %>"><button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><a href="/api/posts/delete/<%= post.id %>"><strong>Yes, enable</strong></a></button></a>
+                          <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                   <span class="d-flex justify-content-end">Post #<%= post.id %></span>
               </p>
