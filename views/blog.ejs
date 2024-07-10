@@ -54,7 +54,7 @@
 
                   <span class="d-flex justify-content-end my-1">
                     <button class="mx-2"><a href="/edit"><img src="/assets/edit.svg" width="20" ></a></button>
-                    <button class=""><img src="/assets/delete.svg" width="20"></button>
+                    <button class=""><a href="/api/posts/delete/<%= post.id %>"><img src="/assets/delete.svg" width="20"></a></button>
                   </span>
 
                   <span class="d-flex justify-content-end">Post #<%= post.id %></span>
