@@ -14,6 +14,13 @@ app.get("/posts", (req, res) => {
   res.json(posts);
 });
 
+// Get specific ID of post
+app.get("/posts/:id", (req, res) => {
+  const post = posts.find((p) => p.id === parseInt(req.params.id));
+  if (!post) return res.status(404).json({ message: "Post not found" });
+  res.json(post);
+});
+
 app.post("/posts", (req, res) => {
   lastId++;
 
