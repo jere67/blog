@@ -36,7 +36,7 @@ app.post("/posts", (req, res) => {
   res.status(201).json(newPost);
 });
 
-app.post("/posts/:id", (req, res) => {
+app.patch("/posts/:id", (req, res) => {
   const updateID = parseInt(req.params.id);
   const foundPost = posts.find((post) => post.id === updateID);
   let today = new Date().toString();
