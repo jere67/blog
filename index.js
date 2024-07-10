@@ -2,45 +2,63 @@ import express from "express";
 import bodyParser from "body-parser";
  
 const app = express();
-const port = 3000;
+const port = 4000;
  
-app.use(express.static("public"));
+app.use(bodyParser.json()); // Use for API file
 app.use(bodyParser.urlencoded({ extended: true }));
-
-let posts = [];
  
-app.get("/", (req, res) => {
-  res.render("index.ejs");
+let posts = [];
+let lastId = 3;
+
+app.get("/posts", (req, res) => {
+  res.json(posts);
 });
 
-app.get("/blog", (req, res) => {
-  res.render("blog.ejs", { posts: posts });
-});
+app.post("/posts", (req, res) => {
+  lastId++;
 
-app.get("/create", (req, res) => {
-  res.render("create.ejs");
-});
-
-app.post("/submit-create", (req, res) => {
-  console.log(req.body);
-  console.log(req.body.title);
-  let post = {
+  let today = new Date().toString();
+  const newPost = {
+    id: lastId,
     title: req.body.title,
-    author: req.body.author,
     content: req.body.content,
+    author: req.body.author,
+    date: today
+  };
+  posts.push(newPost);
+  res.status(201).json(newPost);
+});
+
+app.post("/posts/:id", (req, res) => {
+  const updateID = parseInt(req.params.id);
+  const foundPost = posts.find((post) => post.id === updateID);
+  let today = new Date().toString();
+
+  const newPost = {
+    id: updateID,
+    title: req.body.title || foundPost.title,
+    content: req.body.content || foundPost.content,
+    author: req.body.author || foundPost.author,
+    date: today
+  };
+
+  const foundPostIndex = posts.findIndex((post) => post.id === updateID);
+  posts[foundPostIndex] = newPost;
+  res.json(newPost);
+});
+
+app.delete("/posts/:id", (req, res) => {
+  const updateID = parseInt(req.params.id);
+  const foundPost = posts.findIndex((post) => post.id === updateID);
+  if (foundPost > -1) {
+    posts.splice(foundPost, 1);
+    lastId--;
+    res.sendStatus(200);
+  } else {
+    res.status(404).json({ error: `No matching ID was found. `});
   }
-  posts.push(post);
-  res.redirect("/blog");
-});
-
-app.get("/edit", (req, res) => {
-  res.render("edit.ejs");
-});
-
-app.get("/delete", (req, res) => {
-  res.render("delete.ejs");
 });
  
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+  console.log(`API is running at http://localhost:${port}`);
 });
